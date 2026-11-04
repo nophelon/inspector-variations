@@ -2,7 +2,7 @@
 <title>인스펙터 리디자인 — 레퍼런스 충실 5안 (BFFF6B)</title><style>
 *{box-sizing:border-box}
 :root{
-  --accent:#BFFF6B;--on-accent:#12210A;
+  --accent:#D646AC;--on-accent:#FFFFFF;
   --page1:#ECEDF4;--page2:#E4E2EF;
   --panel:#FFFFFF;--panel-2:#F4F5F8;--ink:#171922;--label:#9AA0AC;--line:#E9EBEF;
   --sel:#FFFFFF;--sel-sh:0 2px 8px rgba(23,25,34,.10),0 0 0 1px rgba(23,25,34,.04);
@@ -90,7 +90,7 @@ svg{width:22px;height:22px;display:block}
 .vc .vn{font-size:17px;font-weight:750;margin:9px 0 2px}.vc .vg{font-size:11px;color:var(--label);font-weight:650;margin-bottom:8px}.vc p{font-size:12.5px;color:var(--label);margin:0;line-height:1.55}</style></head>
 <body><div class="page">
   <div class="cap"><div class="n"><b>UI</b><span>에디터 우측 패널</span></div><h1>인스펙터 리디자인 — 레퍼런스 충실 5안</h1>
-  <p>레퍼런스(떠있는 카드·굵은 블랙아이콘·풀 pill·세로연결선 트리·흰 선택pill)를 정확히 반영. 브랜드 라임 <b style="color:var(--ink)">#BFFF6B</b>. 우상단 라이트/다크.</p></div>
+  <p>레퍼런스(떠있는 카드·굵은 블랙아이콘·풀 pill·세로연결선 트리·흰 선택pill)를 정확히 반영. 브랜드 라임 <b style="color:var(--ink)">#D646AC</b>. 우상단 라이트/다크.</p></div>
   <div class="bar"><span class="tg"><button data-t="light" class="on" onclick="setT('light')">라이트</button><button data-t="dark" onclick="setT('dark')">다크</button></span></div>
   <div class="grid"><a class="vc" href="f1.html"><div class="vt">F1</div><div class="vn">충실 재현</div><div class="vg">image3 그대로</div><p>레퍼런스 Datasets 패턴 그대로 — "배경"이 라임 풀 pill(안쪽 ⌄), 하위 이미지/동영상/색상은 세로 연결선 트리, 동영상이 흰 선택 pill. 아래 상세.</p></a><a class="vc" href="f2.html"><div class="vt">F2</div><div class="vn">아이콘 레일 + 패널</div><div class="vg">듀얼(풀 재현)</div><p>레퍼런스의 "얇은 아이콘 레일 + 패널" 2단 구조를 그대로. 왼쪽 레일(배경 활성=라임 원), 오른쪽 패널에 트리.</p></a><a class="vc" href="f3.html"><div class="vt">F3</div><div class="vn">섹션 라벨 그룹</div><div class="vg">2열 느낌</div><p>레퍼런스의 "Agents/Signals" 회색 섹션 라벨 구조. 콘텐츠·맞춤·고급을 라벨로 나눠 더 정돈.</p></a><a class="vc" href="f4.html"><div class="vt">F4</div><div class="vn">3섹션 피어</div><div class="vg">미니멀</div><p>배경·모바일영상·배경색을 동급 아코디언 행으로. 하나만 라임 활성, 나머지는 차분한 행. 가장 담백.</p></a><a class="vc" href="f5.html"><div class="vt">F5</div><div class="vn">컴팩트</div><div class="vg">고밀도</div><p>충실 재현을 좁은 화면용으로 간격·크기만 압축. 라임 pill·연결선·흰 선택 pill 유지.</p></a></div>
 </div><script>function setT(t){document.documentElement.setAttribute('data-theme',t);document.querySelectorAll('.tg button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));}</script></body></html>
