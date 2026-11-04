@@ -104,7 +104,8 @@ svg{width:20px;height:20px;display:block}
 .pli.on{background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;box-shadow:0 4px 12px var(--accent-line)}
 .pli.on .fico{color:#fff}
 .pli .fico{color:var(--ink-2);display:flex}
-.pli .grip{color:var(--label);display:flex;margin-left:auto;opacity:0}.pli:hover .grip{opacity:.65}
+.pli .grip{color:var(--label);display:flex;align-items:center;width:18px;flex:0 0 auto;opacity:0}.pli:hover .grip{opacity:.6}
+.pli.on .grip{opacity:0}
 .pli .nm{flex:1}
 .pli .del{border:0;background:transparent;color:var(--label);padding:2px;border-radius:7px;cursor:pointer;opacity:0;display:flex}.pli:hover .del{opacity:.65}
 .pg-add{margin:4px 12px 0;display:flex;align-items:center;gap:8px;justify-content:center;padding:11px;border-radius:12px;border:1.5px dashed var(--line);color:var(--label);font-size:13px;font-weight:650;cursor:pointer;background:transparent;font-family:var(--font)}
@@ -210,8 +211,8 @@ function topbar(){
 }
 function pgbar(){
   const items = PAGES.map(p => p.on
-    ? `<button class="pli on"><span class="nm">${p.nm}</span></button>`
-    : `<div class="pli"><span class="nm">${p.nm}</span><span class="grip">${I.grip}</span><button class="del" aria-label="삭제">${I.minus}</button></div>`
+    ? `<button class="pli on"><span class="grip"></span><span class="nm">${p.nm}</span></button>`
+    : `<div class="pli"><span class="grip" title="드래그해서 순서 이동">${I.grip}</span><span class="nm">${p.nm}</span><button class="del" aria-label="삭제">${I.minus}</button></div>`
   ).join('');
   return `<aside class="pgbar"><div class="pg-head"><b>페이지</b><button class="x" title="패널 닫기">${I.panel}</button></div><div class="pg-list">${items}<button class="pg-add">${I.plus}<span>페이지 추가</span></button></div></aside>`;
 }
