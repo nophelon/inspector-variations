@@ -139,8 +139,8 @@ svg{width:20px;height:20px;display:block}
 .ib{padding:6px 14px 22px}
 
 /* 드롭다운 박스(아코디언) */
-.box{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:11px;transition:box-shadow .2s,border-color .2s,background .2s}
-.box.open{box-shadow:var(--box-sh)}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:11px;transition:border-color .2s,background .2s}
+.box.open{border-color:var(--accent-line)}
 .box-head{display:flex;align-items:center;gap:12px;padding:15px 15px;cursor:pointer;border:0;background:transparent;width:100%;text-align:left;font-family:var(--font);color:var(--ink)}
 .box .chip{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:var(--chip-bg);color:var(--chip-ink);flex:0 0 auto;transition:background .2s,color .2s}
 .box .chip svg{width:19px;height:19px}
@@ -284,4 +284,18 @@ writeFileSync(dir + 'index.html', `<!doctype html><html lang="ko"><head><meta ch
 </style></head><body><div class="wrap">
 <div class="cap"><div class="n"><b>EDITOR</b><span>chrome + 아코디언 인스펙터</span></div><h1>에디터 화면 디자인 베리에이션</h1><p>설정을 <b>드롭다운 박스(아코디언)</b>에 담고, 상단바(GNB)·왼쪽 메뉴까지 같은 톤앤매너로. 브랜드 컬러 <b>#8F48F3</b>. 박스 제목을 누르면 열고 닫혀요.</p></div>
 <div class="list">${cards}</div></div></body></html>`);
-console.log('generated', VARIS.map(v=>v.id).join(', '), '+ index (f5→redirect)');
+// ── F1 독립 HTML(변형 전환 UI 없이 실제 화면처럼 꽉 차게) ──
+const standalone = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>에디터 — F1 소프트 카드 아코디언</title><style>${BASE}
+body{background:var(--app)}
+.wrap{padding:0;min-height:100vh;align-items:stretch}
+.app{max-width:none;width:100vw;height:100vh;min-height:0;border-radius:0;border:0;box-shadow:none}
+.tfloat{position:fixed;right:16px;bottom:16px;z-index:9;box-shadow:0 6px 20px rgba(80,50,160,.22)}
+</style></head><body><div class="wrap"><div class="app">${topbar()}<div class="work">${pgbar()}${canvas()}${inspector()}</div></div></div>
+<span class="tg tfloat"><button data-t="light" class="on" onclick="setT('light')">라이트</button><button data-t="dark" onclick="setT('dark')">다크</button></span>
+<script>
+function setT(t){document.documentElement.setAttribute('data-theme',t);document.querySelectorAll('.tg button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));}
+document.querySelectorAll('.box-head').forEach(h=>h.addEventListener('click',()=>h.parentElement.classList.toggle('open')));
+</script></body></html>`;
+writeFileSync(dir + 'f1-only.html', standalone);
+console.log('generated', VARIS.map(v=>v.id).join(', '), '+ index + f1-only (f5→redirect)');

@@ -106,8 +106,8 @@ svg{width:20px;height:20px;display:block}
 .ib{padding:6px 14px 22px}
 
 /* 드롭다운 박스(아코디언) */
-.box{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:11px;transition:box-shadow .2s,border-color .2s,background .2s}
-.box.open{box-shadow:var(--box-sh)}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:11px;transition:border-color .2s,background .2s}
+.box.open{border-color:var(--accent-line)}
 .box-head{display:flex;align-items:center;gap:12px;padding:15px 15px;cursor:pointer;border:0;background:transparent;width:100%;text-align:left;font-family:var(--font);color:var(--ink)}
 .box .chip{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:var(--chip-bg);color:var(--chip-ink);flex:0 0 auto;transition:background .2s,color .2s}
 .box .chip svg{width:19px;height:19px}
