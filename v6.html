@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>인스펙터 V6 · 상단 탭 · 2열</title><style>
+*{box-sizing:border-box}
+:root{--bg:#fff;--subtle:#F8FAFC;--text:#0F172A;--muted:#64748B;--border:#E2E8F0;--bstrong:#CBD5E1;
+--primary:#2563EB;--onp:#fff;--phover:#1D4ED8;--neutral:#F1F5F9;--info:#EFF6FF;--infotx:#1D4ED8;--canvas:#E9EDF2;
+--font:-apple-system,BlinkMacSystemFont,"Pretendard","Apple SD Gothic Neo","Segoe UI","Malgun Gothic",sans-serif}
+body{margin:0;font-family:var(--font);background:var(--canvas);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.5}
+.page{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:34px 16px 70px}
+.cap{max-width:360px;text-align:center;margin-bottom:22px}
+.cap .n{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--primary)}
+.cap h1{font-size:20px;font-weight:750;margin:6px 0 6px;letter-spacing:-.01em}
+.cap p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+.nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:26px;max-width:620px}
+.nav a{font-size:12px;font-weight:600;text-decoration:none;color:var(--muted);border:1px solid var(--border);background:#fff;padding:6px 11px;border-radius:999px}
+.nav a.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+/* 에디터 모사: 캔버스 + 우측 레일 */
+.ed{display:flex;gap:0;width:100%;max-width:860px;height:600px;border-radius:16px;overflow:hidden;
+  box-shadow:0 2px 6px rgba(15,23,42,.06),0 20px 50px rgba(15,23,42,.12);border:1px solid var(--border)}
+.cv{flex:1;background:repeating-linear-gradient(45deg,#fafbfc,#fafbfc 12px,#f3f5f8 12px,#f3f5f8 24px);
+  display:grid;place-items:center;color:#aab3c0;font-size:13px;font-weight:600}
+.cv .hero{width:78%;height:46%;border-radius:12px;background:linear-gradient(135deg,#1e293b,#334155);display:grid;place-items:center;color:#cbd5e1;font-size:13px;box-shadow:0 10px 30px rgba(15,23,42,.18);outline:2px solid var(--primary);outline-offset:4px}
+.rail{width:320px;background:#fff;border-left:1px solid var(--border);display:flex;flex-direction:column}
+.rh{display:flex;align-items:center;justify-content:space-between;padding:13px 15px;border-bottom:1px solid var(--border);flex:0 0 auto}
+.rh .t{font-size:13.5px;font-weight:700}
+.rh .x{width:26px;height:26px;border-radius:7px;border:1px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;font-size:15px}
+.rb{flex:1;overflow:auto;padding:0}
+.ic{color:var(--primary);display:grid;place-items:center}
+label{display:block}
+input{font-family:var(--font)}
+button{font-family:var(--font);cursor:pointer}
+.dot{width:7px;height:7px;border-radius:50%;background:#16A34A;display:inline-block;vertical-align:middle}
+.dot.w{background:#F59E0B;animation:pz 1.4s infinite}@keyframes pz{50%{opacity:.35}}
+.sv{position:relative;width:100%;height:116px;border-radius:10px;cursor:crosshair;background:linear-gradient(to top,#000,transparent),linear-gradient(to right,#fff,var(--primary))}
+.sv i{position:absolute;top:16%;left:76%;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid #0F172A;transform:translate(-50%,-50%)}
+.hue{height:11px;border-radius:999px;margin-top:9px;background:linear-gradient(to right,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);position:relative}
+.hue i{position:absolute;top:50%;left:60%;width:15px;height:15px;border-radius:50%;background:#fff;border:2px solid #334155;transform:translate(-50%,-50%)}
+
+.tabs{display:flex;border-bottom:1px solid var(--border);padding:0 8px;flex:0 0 auto}
+.tabs button{font-size:12.5px;font-weight:650;padding:12px 12px;border:0;background:transparent;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button.on{color:var(--primary);border-bottom-color:var(--primary)}
+.rb{padding:16px}
+.r2{display:grid;grid-template-columns:76px 1fr;gap:10px 12px;align-items:center}
+.r2 .l{font-size:12px;color:var(--muted);font-weight:600}
+.r2 .c{min-width:0}
+.full{grid-column:1/-1}
+.div{grid-column:1/-1;height:1px;background:var(--border);margin:6px 0}
+.inp{width:100%;font-size:12.5px;padding:8px 10px;border:1px solid var(--bstrong);border-radius:8px;background:#fff}
+.seg{display:flex;background:var(--neutral);border-radius:8px;padding:3px;gap:3px}
+.seg button{flex:1;font-size:12px;font-weight:600;padding:6px 0;border:0;border-radius:6px;background:transparent;color:var(--muted)}.seg button.on{background:#fff;color:var(--text);box-shadow:0 1px 2px rgba(15,23,42,.12)}
+.row{display:flex;gap:7px}.btn{font-size:12.5px;font-weight:650;padding:8px 13px;border-radius:8px;border:1px solid transparent}.btn.p{background:var(--primary);color:#fff;flex:1}.btn.g{background:#fff;color:var(--text);border:1px solid var(--bstrong)}
+.st{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:5px}
+.hint{font-size:11px;color:var(--muted);margin:0}</style></head>
+<body><div class="page">
+  <div class="cap"><div class="n">변형 V6 · 구조적</div><h1>상단 탭 · 2열</h1><p>패널 맨 위 탭으로 배경·텍스트·고급을 전환. 본문은 라벨(좌)·컨트롤(우) 2열로 깔끔하게.</p></div>
+  <div class="nav"><a href="index.html">목록</a><a href="v1.html" class="">V1 플랫 · 구분선</a><a href="v2.html" class="">V2 소프트 카드</a><a href="v3.html" class="">V3 아코디언</a><a href="v4.html" class="">V4 컴팩트 프로</a><a href="v5.html" class="">V5 크게 · 친절</a><a href="v6.html" class="on">V6 상단 탭 · 2열</a></div>
+  <div class="ed"><div class="cv"><div class="hero">히어로 섹션 (선택됨)</div></div>
+    <div class="rail"><div class="rh"><span class="t">히어로 섹션 · 배경</span><button class="x">×</button></div>
+<div class="tabs"><button class="on">배경</button><button>텍스트</button><button>간격</button><button>고급</button></div>
+<div class="rb">
+  <div class="r2">
+    <span class="l">콘텐츠</span><span class="c"><div class="seg"><button>이미지</button><button class="on">동영상</button><button>색상</button></div></span>
+    <span class="l">링크</span><span class="c"><input class="inp" value="https://youtu.be/v-ALMSlqyy0"></span>
+    <span class="l">상태</span><span class="c"><span class="st"><span class="dot"></span> 연결됨</span></span>
+    <span class="c full"><div class="row"><button class="btn p">넣기</button><button class="btn g">빼기</button></div></span>
+    <div class="div"></div>
+    <span class="l">데스크탑</span><span class="c"><div class="seg"><button>세로</button><button class="on">가로</button></div></span>
+    <span class="l">모바일영상</span><span class="c"><input class="inp" value="https://youtu.be/4OIN9yvgViM"></span>
+    <span class="l">모바일맞춤</span><span class="c"><div class="seg"><button class="on">세로</button><button>가로</button></div></span>
+    <span class="c full"><p class="hint">링크(임베드)만 가능 · 사진과 동영상은 함께 못 넣어요.</p></span>
+  </div>
+</div></div></div>
+</div></body></html>
