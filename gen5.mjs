@@ -187,7 +187,7 @@ function box(icon, title, sub, body, open){
 }
 function inspector(){
   return `<div class="insp">
-  <div class="ih"><button class="bk">${I.back}</button><span><b>배경 설정</b><small>히어로 섹션</small></span></div>
+  <div class="ih"><span><b>배경 설정</b><small>히어로 섹션</small></span></div>
   <div class="ib">
     ${box('layers','배경','동영상 · 가로',bgBody,true)}
     ${box('phone','모바일 전용 영상','없음',mobBody,false)}
@@ -210,8 +210,8 @@ function topbar(){
 }
 function pgbar(){
   const items = PAGES.map(p => p.on
-    ? `<button class="pli on">${ico(p.ic)}<span class="nm">${p.nm}</span></button>`
-    : `<div class="pli"><span class="fico">${ico(p.ic)}</span><span class="nm">${p.nm}</span><span class="grip">${I.grip}</span><button class="del" aria-label="삭제">${I.minus}</button></div>`
+    ? `<button class="pli on"><span class="nm">${p.nm}</span></button>`
+    : `<div class="pli"><span class="nm">${p.nm}</span><span class="grip">${I.grip}</span><button class="del" aria-label="삭제">${I.minus}</button></div>`
   ).join('');
   return `<aside class="pgbar"><div class="pg-head"><b>페이지</b><button class="x" title="패널 닫기">${I.panel}</button></div><div class="pg-list">${items}<button class="pg-add">${I.plus}<span>페이지 추가</span></button></div></aside>`;
 }
