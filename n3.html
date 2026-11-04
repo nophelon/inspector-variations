@@ -1,0 +1,86 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>인스펙터 N3 · 틴트 오픈 카드</title><style>
+*{box-sizing:border-box}
+:root{
+  --accent:#BFFF6B;--on-accent:#101410;--accent-soft:#F0FFD8;
+  --page:#EEF0F3;--surface:#FFFFFF;--surface-2:#F6F7F9;--rail:#FFFFFF;
+  --text:#14171A;--muted:#8B929B;--faint:#AEB4BC;--border:#ECEEF1;--bstrong:#DDE1E6;
+  --shadow:0 1px 2px rgba(20,23,26,.04),0 12px 32px rgba(20,23,26,.08);
+  --danger:#F2456B;--radius:18px;--rcard:16px;--rpill:999px;
+  --font:-apple-system,BlinkMacSystemFont,"Pretendard","Apple SD Gothic Neo","Segoe UI","Malgun Gothic",sans-serif}
+@media (prefers-color-scheme:dark){:root{
+  --page:#09090A;--surface:#141416;--surface-2:#1B1C1F;--rail:#141416;
+  --text:#F2F3F5;--muted:#8A9099;--faint:#5C626B;--border:#232428;--bstrong:#2E3035;
+  --accent-soft:#1E2A12;--shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.5)}}
+:root[data-theme=light]{--page:#EEF0F3;--surface:#FFFFFF;--surface-2:#F6F7F9;--rail:#FFFFFF;--text:#14171A;--muted:#8B929B;--faint:#AEB4BC;--border:#ECEEF1;--bstrong:#DDE1E6;--accent-soft:#F0FFD8;--shadow:0 1px 2px rgba(20,23,26,.04),0 12px 32px rgba(20,23,26,.08)}
+:root[data-theme=dark]{--page:#09090A;--surface:#141416;--surface-2:#1B1C1F;--rail:#141416;--text:#F2F3F5;--muted:#8A9099;--faint:#5C626B;--border:#232428;--bstrong:#2E3035;--accent-soft:#1E2A12;--shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.5)}
+body{margin:0;font-family:var(--font);background:var(--page);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.5;transition:background .2s}
+svg{width:18px;height:18px;display:block}
+.page{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:30px 16px 70px}
+.cap{max-width:380px;text-align:center;margin-bottom:18px}
+.cap .n{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cap .n b{color:var(--text);background:var(--accent);color:var(--on-accent);padding:1px 7px;border-radius:999px;margin-right:6px}
+.cap h1{font-size:19px;font-weight:750;margin:7px 0 6px;letter-spacing:-.01em}
+.cap p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+.bar{display:flex;gap:8px;align-items:center;margin-bottom:22px;flex-wrap:wrap;justify-content:center}
+.nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.nav a{font-size:12px;font-weight:600;text-decoration:none;color:var(--muted);border:1px solid var(--border);background:var(--surface);padding:6px 11px;border-radius:999px}
+.nav a.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.tg{display:inline-flex;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:3px}
+.tg button{border:0;background:transparent;color:var(--muted);font-size:12px;font-weight:650;padding:5px 11px;border-radius:999px;cursor:pointer;font-family:var(--font)}
+.tg button.on{background:var(--accent);color:var(--on-accent)}
+/* 에디터 모사 */
+.ed{display:flex;width:100%;max-width:880px;height:620px;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:var(--surface)}
+.cv{flex:1;background:var(--surface-2);display:grid;place-items:center;padding:30px}
+.cv .hero{width:82%;height:50%;border-radius:18px;background:linear-gradient(135deg,#20242b,#30363f);display:grid;place-items:center;color:#aeb4bc;font-size:13px;font-weight:600;box-shadow:0 20px 50px rgba(0,0,0,.2);outline:2.5px solid var(--accent);outline-offset:5px}
+.rail{width:328px;background:var(--rail);border-left:1px solid var(--border);display:flex;flex-direction:column}
+.rh{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;flex:0 0 auto}
+.rh .t{font-size:14px;font-weight:750;letter-spacing:-.01em}
+.rh .t small{display:block;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0}
+.rh .mode{font-size:10.5px;color:var(--muted);font-weight:600}
+.sw{width:42px;height:24px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);position:relative;cursor:pointer}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:var(--accent);transition:left .18s}
+.rb{flex:1;overflow:auto;padding:4px 14px 18px}
+.inp{width:100%;font-family:var(--font);font-size:13px;padding:11px 13px;border:1px solid var(--bstrong);border-radius:12px;background:var(--surface);color:var(--text)}
+.inp::placeholder{color:var(--faint)}
+.inp:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.dot{width:7px;height:7px;border-radius:50%;background:#49C96B;display:inline-block;vertical-align:middle}
+.dot.w{background:#F5B13D;animation:pz 1.4s infinite}@keyframes pz{50%{opacity:.35}}
+.sv{position:relative;width:100%;height:120px;border-radius:12px;cursor:crosshair;background:linear-gradient(to top,#000,transparent),linear-gradient(to right,#fff,var(--accent))}
+.sv i{position:absolute;top:16%;left:76%;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid #14171A;transform:translate(-50%,-50%)}
+.hue{height:11px;border-radius:999px;margin-top:9px;background:linear-gradient(to right,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);position:relative}
+.hue i{position:absolute;top:50%;left:30%;width:15px;height:15px;border-radius:50%;background:#fff;border:2px solid #334155;transform:translate(-50%,-50%)}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rcard);margin-bottom:12px;overflow:hidden}
+.card.open{background:var(--accent-soft);border-color:var(--accent)}
+.ah{display:flex;align-items:center;gap:11px;width:100%;padding:15px 16px;border:0;background:transparent;color:var(--text);font-size:13.5px;font-weight:700;text-align:left;font-family:var(--font);cursor:pointer}
+.ah .ico{color:var(--muted)}.card.open .ah .ico{color:var(--text)}.ah .cv{margin-left:auto;color:var(--faint);transition:transform .18s}.card.open .ah .cv{transform:rotate(90deg);color:var(--text)}
+.ap{display:none;padding:0 16px 16px}.card.open .ap{display:block}
+.inp{background:var(--surface)}
+.seg{display:flex;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:4px;gap:4px;margin-bottom:12px}
+.seg button{flex:1;font-family:var(--font);font-size:12.5px;font-weight:650;padding:9px 0;border:0;border-radius:9px;background:transparent;color:var(--muted);cursor:pointer}
+.seg button.on{background:var(--accent);color:var(--on-accent)}
+.fl{font-size:12px;font-weight:650;color:var(--muted);margin:12px 0 7px}.fl:first-child{margin-top:0}.fl .s{float:right;font-weight:500}
+.row{display:flex;gap:8px;margin-top:9px}.btn{font-family:var(--font);font-size:13px;font-weight:700;padding:10px 14px;border-radius:12px;border:0;cursor:pointer}
+.btn.p{background:var(--accent);color:var(--on-accent);flex:1}.btn.g{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+.segm{display:inline-flex;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:3px;margin-top:4px}.segm button{font-family:var(--font);padding:6px 16px;font-size:12.5px;border:0;border-radius:999px;background:transparent;color:var(--muted);font-weight:650;cursor:pointer}.segm button.on{background:var(--accent);color:var(--on-accent)}
+.hint{font-size:11px;color:var(--muted);margin:11px 0 0}</style></head>
+<body><div class="page">
+  <div class="cap"><div class="n"><b>N3</b>은은</div><h1>틴트 오픈 카드</h1><p>열린 카드 배경을 연한 라임 틴트로. 선택 세그먼트도 라임. 부드럽고 통일감.</p></div>
+  <div class="bar"><div class="nav"><a href="index.html">목록</a><a href="n1.html" class="">N1 풀 pill 아코디언</a><a href="n2.html" class="">N2 라임 좌측 바</a><a href="n3.html" class="on">N3 틴트 오픈 카드</a><a href="n4.html" class="">N4 아이콘 레일 + 카드</a><a href="n5.html" class="">N5 에어리 미니멀</a></div><span class="tg"><button data-t="light" class="on" onclick="setT('light')">라이트</button><button data-t="dark" onclick="setT('dark')">다크</button></span></div>
+  <div class="ed"><div class="cv"><div class="hero">히어로 섹션 (선택됨)</div></div>
+    <div class="rail"><div class="rh"><span class="t">히어로 섹션<small>배경 설정</small></span><span class="sw" aria-hidden="true"></span></div><div class="rb">
+<div class="card open">
+  <button class="ah"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span>배경<span class="cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></span></button>
+  <div class="ap">
+    <div class="seg"><button>이미지</button><button class="on">동영상</button><button>색상</button></div>
+    <label class="fl">동영상 링크 <span class="s"><span class="dot"></span> 연결됨</span></label><input class="inp" value="https://youtu.be/v-ALMSlqyy0">
+    <div class="row"><button class="btn p">넣기</button><button class="btn g">빼기</button></div>
+    <div class="fl">화면 맞춤</div><div class="segm"><button>세로</button><button class="on">가로</button></div>
+    <p class="hint">링크(임베드)만 가능 · 파일 업로드 미지원.</p>
+  </div>
+</div>
+<div class="card"><button class="ah"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="3" width="10" height="18" rx="3"/><path d="M11 18h2"/></svg></span>모바일 전용 영상<span class="cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></span></button>
+  <div class="ap"><label class="fl">모바일 링크 <span class="s"><span class="dot w"></span> 연결 중</span></label><input class="inp" value="https://youtu.be/4OIN9yvgViM"><div class="fl">모바일 맞춤</div><div class="segm"><button class="on">세로</button><button>가로</button></div></div></div>
+<div class="card"><button class="ah"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="10" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="15" r="1.2" fill="currentColor" stroke="none"/></svg></span>배경 색<span class="cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></span></button><div class="ap"><div class="sv"><i></i></div><div class="hue"><i></i></div></div></div></div></div></div>
+</div><script>function setT(t){document.documentElement.setAttribute('data-theme',t);document.querySelectorAll('.tg button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));var s=document.querySelector('.sw');if(s)s.setAttribute('data-theme-sw',t);}</script></body></html>
