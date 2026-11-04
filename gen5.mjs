@@ -203,7 +203,7 @@ function topbar(){
   <div class="device"><button class="on" title="데스크톱">${I.monitor}</button><button title="모바일">${I.mobile}</button></div>
   <span class="tb-note">글자·사진을 눌러 바로 고쳐 보세요</span>
   <span class="sp"></span>
-  <button class="tbtn ghost">${I.eye}&nbsp;미리보기</button>
+  <button class="tbtn ghost">미리보기</button>
   <button class="tbtn primary" disabled>저장하기</button>
   <button class="tbtn ghost">나가기</button>
 </div>`;
